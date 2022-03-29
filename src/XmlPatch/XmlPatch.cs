@@ -30,15 +30,15 @@ namespace XmlPatch
 
 				switch (node.Name)
 				{
-				case "add":
-					Add(baseDoc, node, targetNode);
-					break;
-				case "remove":
-					Remove(node, targetNode);
-					break;
-				case "replace":
-					Replace(baseDoc, node, targetNode);
-					break;
+					case "add":
+						Add(baseDoc, node, targetNode);
+						break;
+					case "remove":
+						Remove(node, targetNode);
+						break;
+					case "replace":
+						Replace(baseDoc, node, targetNode);
+						break;
 				}
 			}
 
@@ -63,15 +63,15 @@ namespace XmlPatch
 
 					switch (position)
 					{
-					case After:
-						targetNode.ParentNode.InsertAfter(importNode, targetNode);
-						break;
-					case Before:
-						targetNode.ParentNode.InsertBefore(importNode, targetNode);
-						break;
-					default:
-						targetNode.AppendChild(importNode);
-						break;
+						case After:
+							targetNode.ParentNode.InsertAfter(importNode, targetNode);
+							break;
+						case Before:
+							targetNode.ParentNode.InsertBefore(importNode, targetNode);
+							break;
+						default:
+							targetNode.AppendChild(importNode);
+							break;
 					}
 				}
 				return;
