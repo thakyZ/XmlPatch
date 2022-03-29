@@ -1,15 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlPatch", "XmlPatch\XmlPatch.csproj", "{B45072B7-6DEE-47A6-BC66-0DF7DDC3C7E4}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XmlPatch", "XmlPatch\XmlPatch.csproj", "{A94341DF-A9AD-47A9-8EE7-7018F14C75FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlPatch.Test", "XmlPatch.Test\XmlPatch.Test.csproj", "{AEB8A9AC-4D37-4F3E-A323-40FB8EE5010F}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BCC69AE3-0F6D-4B4F-9D15-9010044259F5}"
-	ProjectSection(SolutionItems) = preProject
-		..\readme.md = ..\readme.md
-		..\build\release.proj = ..\build\release.proj
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XmlPatch.Test", "XmlPatch.Test\XmlPatch.Test.csproj", "{8B0BDCF7-7B92-4290-915A-FE3842D0F88C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,67 +13,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AEB8A9AC-4D37-4F3E-A323-40FB8EE5010F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AEB8A9AC-4D37-4F3E-A323-40FB8EE5010F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AEB8A9AC-4D37-4F3E-A323-40FB8EE5010F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AEB8A9AC-4D37-4F3E-A323-40FB8EE5010F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B45072B7-6DEE-47A6-BC66-0DF7DDC3C7E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B45072B7-6DEE-47A6-BC66-0DF7DDC3C7E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B45072B7-6DEE-47A6-BC66-0DF7DDC3C7E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B45072B7-6DEE-47A6-BC66-0DF7DDC3C7E4}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = XmlPatch\XmlPatch.csproj
-		Policies = $0
-		$0.DotNetNamingPolicy = $1
-		$1.DirectoryNamespaceAssociation = None
-		$1.ResourceNamePolicy = FileFormatDefault
-		$0.TextStylePolicy = $2
-		$2.inheritsSet = null
-		$2.scope = text/x-csharp
-		$0.CSharpFormattingPolicy = $3
-		$3.AnonymousMethodBraceStyle = NextLine
-		$3.PropertyBraceStyle = NextLine
-		$3.PropertyGetBraceStyle = NextLine
-		$3.PropertySetBraceStyle = NextLine
-		$3.EventBraceStyle = NextLine
-		$3.EventAddBraceStyle = NextLine
-		$3.EventRemoveBraceStyle = NextLine
-		$3.StatementBraceStyle = NextLine
-		$3.PlaceElseOnNewLine = True
-		$3.PlaceCatchOnNewLine = True
-		$3.PlaceFinallyOnNewLine = True
-		$3.BeforeMethodDeclarationParentheses = False
-		$3.BeforeMethodCallParentheses = False
-		$3.BeforeConstructorDeclarationParentheses = False
-		$3.BeforeIndexerDeclarationBracket = False
-		$3.BeforeDelegateDeclarationParentheses = False
-		$3.NewParentheses = False
-		$3.SpacesBeforeBrackets = False
-		$3.inheritsSet = Mono
-		$3.inheritsScope = text/x-csharp
-		$3.scope = text/x-csharp
-		$0.TextStylePolicy = $4
-		$4.FileWidth = 120
-		$4.TabWidth = 4
-		$4.EolMarker = Windows
-		$4.inheritsSet = Mono
-		$4.inheritsScope = text/plain
-		$4.scope = text/plain
-		$0.TextStylePolicy = $5
-		$5.inheritsSet = null
-		$5.scope = application/xml
-		$0.XmlFormattingPolicy = $6
-		$6.inheritsSet = Mono
-		$6.inheritsScope = application/xml
-		$6.scope = application/xml
-		$0.StandardHeader = $7
-		$7.Text = 
-		$7.IncludeInNewFiles = True
+		{A94341DF-A9AD-47A9-8EE7-7018F14C75FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A94341DF-A9AD-47A9-8EE7-7018F14C75FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A94341DF-A9AD-47A9-8EE7-7018F14C75FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A94341DF-A9AD-47A9-8EE7-7018F14C75FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B0BDCF7-7B92-4290-915A-FE3842D0F88C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B0BDCF7-7B92-4290-915A-FE3842D0F88C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B0BDCF7-7B92-4290-915A-FE3842D0F88C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B0BDCF7-7B92-4290-915A-FE3842D0F88C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6103CFB-87C2-40E3-AA4C-34F66321EC44}
 	EndGlobalSection
 EndGlobal
