@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace XmlPatch
 {
@@ -12,39 +13,73 @@ namespace XmlPatch
 		private const string After = "after";
 		private const string Both = "both";
 
-		public XmlDocument Patch(string baseFile, string diffFile)
+		public static string GetInnerXML(XElement element)
+        {
+			var reader = element.CreateReader();
+			reader.MoveToContent();
+			return reader.ReadInnerXml();
+		}
+
+		public static string GetInnerXML(XDocument document)
 		{
-			var baseDoc = new XmlDocument();
-			baseDoc.Load(baseFile);
-			var diffDoc = new XmlDocument();
-			diffDoc.Load(diffFile);
+			var reader = document.CreateReader();
+			reader.MoveToContent();
+			return reader.ReadInnerXml();
+		}
+
+		public static IEnumerable<XAttribute> GetAttributes(XElement element) => from att in element.Attributes() select att;
+
+		public static XmlDocument ToXmlDocument(XDocument xDocument)
+		{
+			var xmlDocument = new XmlDocument();
+			using (var xmlReader = xDocument.CreateReader())
+			{
+				xmlDocument.Load(xmlReader);
+			}
+			return xmlDocument;
+		}
+
+		public static XDocument ToXDocument(XmlDocument xmlDocument)
+		{
+			using (var nodeReader = new XmlNodeReader(xmlDocument))
+			{
+				nodeReader.MoveToContent();
+				return XDocument.Load(nodeReader);
+			}
+		}
+
+		public XDocument Patch(string baseFile, string diffFile)
+		{
+			var baseDoc = File.TryLoadXml(baseFile);
+			var diffDoc = File.TryLoadXml(diffFile);
 
 			return Patch(baseDoc, diffDoc);
 		}
 
-		public XmlDocument Patch(XmlDocument baseDoc, XmlDocument diffDoc)
+		public XDocument Patch(XDocument baseXDoc, XDocument diffXDoc)
 		{
-			foreach (XmlNode node in diffDoc.SelectSingleNode("/diff").ChildNodes)
+			var baseXmlDoc = ToXmlDocument(baseXDoc);
+			var diffXmlDoc = ToXmlDocument(diffXDoc);
+			foreach (XmlNode node in diffXmlDoc.SelectSingleNode("/diff").ChildNodes)
 			{
-				var targetNode = baseDoc.SelectSingleNode(node.Attributes["sel"].Value);
+				var targetNode = baseXmlDoc.SelectSingleNode(node.Attributes["sel"].Value);
 
 				switch (node.Name)
 				{
 					case "add":
-						Add(baseDoc, node, targetNode);
+						Add(baseXmlDoc, node, targetNode);
 						break;
 					case "remove":
 						Remove(node, targetNode);
 						break;
 					case "replace":
-						Replace(baseDoc, node, targetNode);
+						Replace(baseXmlDoc, node, targetNode);
 						break;
 				}
 			}
 
-			return baseDoc;
+			return ToXDocument(baseXmlDoc);
 		}
-
 		private static void Add(XmlDocument baseDoc, XmlNode diffNode, XmlNode targetNode)
 		{
 			var typeAttribute = diffNode.Attributes["type"];
@@ -106,10 +141,10 @@ namespace XmlPatch
 				whitespace = whitespaceAttr.Value;
 				if (whitespace != Before && whitespace != After)
 				{
-					whitespace = Both; 
+					whitespace = Both;
 				}
 			}
-			
+
 			if (targetNode.ParentNode is XmlElement)
 			{
 				var parentNode = (XmlElement)targetNode.ParentNode;

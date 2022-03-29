@@ -5,6 +5,7 @@ using System.Text;
 using Xunit;
 using Xunit.Abstractions;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace XmlPatch.Test
 {
@@ -21,20 +22,17 @@ namespace XmlPatch.Test
         {
             var patcher = new XmlPatch();
             var sourceFile = string.Format(@".\{0}\Base.xml", test);
-            var sourceXml = new XmlDocument();
-            sourceXml.Load(sourceFile);
-            output.WriteLine(sourceXml.InnerXml);
+            var sourceXml = XDocument.Load(sourceFile);
+            output.WriteLine(XmlPatch.GetInnerXML(sourceXml));
             var patchFile = string.Format(@".\{0}\Diff.xml", test);
-            var patchXml = new XmlDocument();
-            patchXml.Load(patchFile);
-            output.WriteLine(patchXml.InnerXml);
+            var patchXml = XDocument.Load(patchFile);
+            output.WriteLine(XmlPatch.GetInnerXML(patchXml));
             var actual = patcher.Patch(sourceXml, patchXml);
-            output.WriteLine(actual.InnerXml);
+            output.WriteLine(XmlPatch.GetInnerXML(actual));
             var expectedFile = string.Format(@".\{0}\Result.xml", test);
-            var expectedDoc = new XmlDocument();
-            expectedDoc.Load(expectedFile);
+            var expectedDoc = XDocument.Load(expectedFile);
 
-            Assert.Equal(expectedDoc.InnerXml, actual.InnerXml);
+            Assert.Equal(XmlPatch.GetInnerXML(expectedDoc), XmlPatch.GetInnerXML(actual));
         }
 
         [Fact]
