@@ -1,6 +1,7 @@
-bin
-obj
-output
+bin/
+obj/
+output/
 *.suo
 *.user
 *.userprefs
+.vs/
