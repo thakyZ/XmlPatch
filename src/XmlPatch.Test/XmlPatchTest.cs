@@ -3,19 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Xunit;
+using Xunit.Abstractions;
 using System.Xml;
 
 namespace XmlPatch.Test
 {
     public class XmlPatchTest
     {
+        private readonly ITestOutputHelper output;
+
+        public XmlPatchTest(ITestOutputHelper output)
+        {
+            this.output = output;
+        }
+
         private void Run(string test)
         {
             var patcher = new XmlPatch();
             var sourceFile = string.Format(@".\{0}\Base.xml", test);
+            var sourceXml = new XmlDocument();
+            sourceXml.Load(sourceFile);
+            output.WriteLine(sourceXml.InnerXml);
             var patchFile = string.Format(@".\{0}\Diff.xml", test);
-            var actual = patcher.Patch(sourceFile, patchFile);
-
+            var patchXml = new XmlDocument();
+            patchXml.Load(patchFile);
+            output.WriteLine(patchXml.InnerXml);
+            var actual = patcher.Patch(sourceXml, patchXml);
+            output.WriteLine(actual.InnerXml);
             var expectedFile = string.Format(@".\{0}\Result.xml", test);
             var expectedDoc = new XmlDocument();
             expectedDoc.Load(expectedFile);
